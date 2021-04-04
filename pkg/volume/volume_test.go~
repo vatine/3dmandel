@@ -1,0 +1,20 @@
+package volume
+
+import (
+	"testing"
+	
+	"github.com/vatine/3dmandel/pkg/coords"
+)
+
+func equalFloat(t *testing.T, seen, want float64) {
+	if seen != want {
+		t.Errorf("Unexpected uneqal, saw %f, wanted %f", seen, want)
+	}
+}
+
+func TestPartial(t *testing.T) {
+	v := Volume(coords.Origin, 1.0, 0.1)
+
+	equalFloat(t, v.step, 0.1)
+	equalFloat(t, v.side, 16.0 * 0.1)
+}
